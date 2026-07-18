@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje Książki - Kody QR</title>
+    <style>
+        :root {
+            --bg: #f3f0ea;
+            --bg-2: #e7efe9;
+            --card: rgba(255, 255, 255, 0.86);
+            --text: #1f2a2a;
+            --muted: #5f6e6d;
+            --accent: #1f6f5b;
+            --accent-2: #0f4c5c;
+            --shadow: 0 20px 50px rgba(31, 42, 42, 0.12);
+            --radius: 22px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(31, 111, 91, 0.12), transparent 32%),
+                radial-gradient(circle at bottom right, rgba(15, 76, 92, 0.10), transparent 28%),
+                linear-gradient(135deg, var(--bg), var(--bg-2));
+            display: grid;
+            place-items: center;
+            padding: 28px 18px;
+        }
+
+        .shell {
+            width: min(1080px, 100%);
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            box-shadow: 0 8px 24px rgba(31, 42, 42, 0.06);
+        }
+
+        h1 {
+            margin: 14px 0 8px;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1.05;
+        }
+
+        .subtitle {
+            margin: 0 auto;
+            max-width: 720px;
+            color: var(--muted);
+            font-size: 1.02rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .card {
+            position: relative;
+            display: grid;
+            gap: 14px;
+            padding: 22px;
+            border-radius: var(--radius);
+            background: var(--card);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+            overflow: hidden;
+            min-height: 100%;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: auto -20px -20px auto;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(31, 111, 91, 0.18), transparent 68%);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 26px 60px rgba(31, 42, 42, 0.16);
+            border-color: rgba(31, 111, 91, 0.22);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .card-title {
+            margin: 0;
+            font-size: 1.28rem;
+            line-height: 1.2;
+        }
+
+        .badge {
+            flex: none;
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(31, 111, 91, 0.12);
+            color: var(--accent);
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .qr-frame {
+            display: grid;
+            place-items: center;
+            padding: 18px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 244, 238, 0.96));
+            border: 1px solid rgba(31, 42, 42, 0.08);
+        }
+
+        .qr-image {
+            width: min(100%, 320px);
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+            display: block;
+            border-radius: 14px;
+            box-shadow: 0 10px 24px rgba(31, 42, 42, 0.08);
+            background: #fff;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .link-hint {
+            color: var(--accent-2);
+            font-weight: 700;
+        }
+
+        @media (max-width: 760px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <section class="hero">
+            <div class="eyebrow">Kody QR do książek</div>
+            <h1>Moje książki</h1>
+            <p class="subtitle">Kliknij dowolny kafelek, aby od razu przejść do strony przypisanej do danego kodu QR.</p>
+        </section>
+
+        <section class="grid" aria-label="Lista kodów QR">
+            <a class="card" href="https://online.fliphtml5.com/uuvnu/ahsu/#p=1" target="_self" rel="noopener noreferrer">
+                <div class="card-header">
+                    <h2 class="card-title">See you on the top</h2>
+                    <span class="badge">Kliknij, aby otworzyć</span>
+                </div>
+                <div class="qr-frame">
+                    <img
+                        class="qr-image"
+                        src="file:///C:/Users/jacek/OneDrive/Pulpit/See%20you%20on%20the%20top.png"
+                        alt="Kod QR dla książki See you on the top"
+                    >
+                </div>
+                <div class="card-footer">
+                    <span>Strona docelowa</span>
+                    <span class="link-hint">Otwórz link</span>
+                </div>
+            </a>
+
+            <a class="card" href="https://planetone.online/downloads/others/books/The_Psychology_of_Money.pdf" target="_self" rel="noopener noreferrer">
+                <div class="card-header">
+                    <h2 class="card-title">Psychology of money</h2>
+                    <span class="badge">Kliknij, aby otworzyć</span>
+                </div>
+                <div class="qr-frame">
+                    <img
+                        class="qr-image"
+                        src="file:///C:/Users/jacek/OneDrive/Pulpit/Psychology%20of%20money.png"
+                        alt="Kod QR dla książki Psychology of money"
+                    >
+                </div>
+                <div class="card-footer">
+                    <span>Strona docelowa</span>
+                    <span class="link-hint">Otwórz link</span>
+                </div>
+            </a>
+        </section>
+    </main>
+</body>
+</html>
